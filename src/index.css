@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 270 80% 75%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 280 70% 70%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 270 80% 75%;
+    --radius: 0.75rem;
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Apply gradient background */
+  html {
+    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+  }
+
+  body {
+    @apply text-foreground;
+    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+  }
+
+  #root {
+    background: transparent !important;
+    min-height: 100vh;
+  }
+
+  main,
+  section {
+    background: transparent !important;
+  }
+}
+
+/* Card hover effects matching your requirements */
+@layer components {
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  /* Navigation active state styling */
+  .nav-item {
+    @apply transition-all duration-300 relative;
+  }
+  
+  .nav-item.active::after {
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
+    content: '';
+    transform: scaleX(1);
+  }
+  
+  .nav-item::after {
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
+    content: '';
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-item:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .bg-custom-gradient {
+    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%);
+    background-attachment: fixed;
+  }
+  
+  /* Gradient accent for buttons */
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+}

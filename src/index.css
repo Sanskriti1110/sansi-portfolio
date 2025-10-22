@@ -35,28 +35,9 @@
     @apply border-border;
   }
 
-  /* Apply gradient background */
-  html {
-    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%) !important;
-    background-attachment: fixed !important;
-    min-height: 100vh;
-  }
-
   body {
     @apply text-foreground;
-    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%) !important;
-    background-attachment: fixed !important;
-    min-height: 100vh;
-  }
-
-  #root {
-    background: transparent !important;
-    min-height: 100vh;
-  }
-
-  main,
-  section {
-    background: transparent !important;
+    background: #000;
   }
 }
 
@@ -95,12 +76,6 @@
 
 /* Utility classes */
 @layer utilities {
-  .bg-custom-gradient {
-    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%);
-    background-attachment: fixed;
-  }
-  
-  /* Gradient accent for buttons */
   .gradient-accent {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }

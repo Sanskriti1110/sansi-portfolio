@@ -5,7 +5,8 @@ import { FileText, BookOpen, ExternalLink } from "lucide-react";
 const publications = [
   {
     icon: FileText,
-    iconColor: "from-purple-500 to-blue-500",
+    iconColors: "from-purple-500 to-blue-500",
+    bgGradient: "from-purple-500 to-blue-500",
     badge: "IEEE XPLORE",
     badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30",
     title: "IEEE Publication - Design and Optimization Study",
@@ -14,7 +15,8 @@ const publications = [
   },
   {
     icon: BookOpen,
-    iconColor: "from-pink-500 to-purple-500",
+    iconColors: "from-pink-500 to-purple-500",
+    bgGradient: "from-pink-500 to-purple-500",
     badge: "AIP PUBLISHING",
     badgeColor: "bg-pink-500/10 text-pink-400 border-pink-500/30",
     title: "AIP Conference Proceedings - Sustainable Architecture",
@@ -41,35 +43,45 @@ export const Publications = () => {
           {publications.map((pub, index) => (
             <Card 
               key={index}
-              className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden group"
+              className="rounded-lg border text-card-foreground shadow-sm overflow-hidden bg-card border-border group relative transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="p-8 space-y-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-4 flex-1">
-                    <div className={`p-3 rounded-lg bg-gradient-to-br ${pub.iconColor} text-white flex-shrink-0`}>
-                      <pub.icon className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1 space-y-3">
-                      <h3 className="text-xl font-bold text-foreground leading-tight">
-                        {pub.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {pub.description}
-                      </p>
-                    </div>
-                  </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${pub.badgeColor} flex-shrink-0`}>
+              {/* Background glow effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${pub.bgGradient} opacity-0 group-hover:opacity-5 transition-all duration-300`}></div>
+              
+              {/* Card Content */}
+              <div className="p-6 space-y-4 relative">
+                {/* Badge at top */}
+                <div className="flex justify-end">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${pub.badgeColor}`}>
                     {pub.badge}
                   </span>
                 </div>
 
+                {/* Icon and Title on same line */}
+                <div className="flex items-start gap-4">
+                  <div className={`p-3 rounded-lg bg-gradient-to-br ${pub.iconColors} text-white flex-shrink-0`}>
+                    <pub.icon className="h-6 w-6" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold tracking-tight text-xl mb-2">
+                      {pub.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  {pub.description}
+                </p>
+
+                {/* Button */}
                 <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  className="w-full gradient-accent text-white border-0 hover:opacity-90"
                   asChild
                 >
                   <a href={pub.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                    <ExternalLink size={18} />
+                    <ExternalLink className="h-4 w-4" />
                     Read Full Paper
                   </a>
                 </Button>

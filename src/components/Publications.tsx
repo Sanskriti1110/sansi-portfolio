@@ -41,26 +41,27 @@ export const Publications = () => {
           {publications.map((pub, index) => (
             <Card 
               key={index}
-              className="bg-card border-border hover:border-primary/50 transition-all hover:scale-105 overflow-hidden group"
+              className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="p-8 space-y-6">
-                <div className="flex items-start justify-between">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${pub.iconColor} flex items-center justify-center transition-transform group-hover:scale-110`}>
-                    <pub.icon className="text-white" size={32} />
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-4 flex-1">
+                    <div className={`p-3 rounded-lg bg-gradient-to-br ${pub.iconColor} text-white flex-shrink-0`}>
+                      <pub.icon className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1 space-y-3">
+                      <h3 className="text-xl font-bold text-foreground leading-tight">
+                        {pub.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {pub.description}
+                      </p>
+                    </div>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${pub.badgeColor}`}>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${pub.badgeColor} flex-shrink-0`}>
                     {pub.badge}
                   </span>
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="text-xl font-bold text-foreground leading-tight">
-                    {pub.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {pub.description}
-                  </p>
                 </div>
 
                 <Button 

@@ -25,8 +25,9 @@ const publications = [
 
 export const Publications = () => {
   return (
-    <section id="publications" className="py-20 px-6 sm:px-8 lg:px-16">
-      <div className="container mx-auto max-w-7xl">
+    <section id="publications" className="py-20 px-6 sm:px-8 lg:px-16 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none"></div>
+      <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
             Research <span className="text-primary">Publications</span>

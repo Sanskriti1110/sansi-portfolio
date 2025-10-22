@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-6 sm:px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-6 sm:px-8 lg:px-16">
       {/* Animated background elements - UPDATED: Enhanced for gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-3xl animate-float"></div>

@@ -44,8 +44,9 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-16 px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
-      <div className="container mx-auto max-w-7xl">
+    <section id="projects" className="py-16 px-8 lg:px-16 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent pointer-events-none"></div>
+      <div className="container mx-auto max-w-7xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">

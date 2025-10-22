@@ -27,7 +27,7 @@ const publications = [
 
 export const Publications = () => {
   return (
-    <section id="publications" className="py-20 px-6 sm:px-8 lg:px-16">
+    <section id="publications" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-16">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
@@ -39,7 +39,7 @@ export const Publications = () => {
           <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4">
           {publications.map((pub, index) => (
             <Card 
               key={index}

@@ -44,7 +44,7 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-16 px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
+    <section id="projects" className="py-12 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -58,7 +58,7 @@ export const Projects = () => {
         </div>
 
         {/* Project Cards - FIXED: Increased gap and margins */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-12 px-2 sm:px-4">
           {projects.map((project, index) => (
             <Card 
               key={index}

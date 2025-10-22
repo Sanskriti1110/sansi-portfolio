@@ -62,7 +62,7 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="rounded-lg border text-card-foreground shadow-sm overflow-hidden card-hover bg-card border-border group relative"
+              className="rounded-lg border text-card-foreground shadow-sm overflow-hidden card-hover bg-card border-border group relative transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* FIXED: Background glow uses the specific icon gradient colors */}

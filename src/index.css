@@ -37,13 +37,7 @@
 
   body {
     @apply text-foreground;
-    background: linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
-  }
-
-  #root {
-    background: transparent;
+    background: #000;
   }
 }
 

@@ -44,9 +44,9 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 sm:px-8 lg:px-16 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <section id="contact" className="py-20 px-6 sm:px-8 lg:px-16 bg-secondary/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/10 to-transparent rounded-full blur-3xl"></div>
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">

@@ -37,7 +37,7 @@ export const Publications = () => {
           <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
           {publications.map((pub, index) => (
             <Card 
               key={index}

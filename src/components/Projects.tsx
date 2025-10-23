@@ -12,10 +12,15 @@ import dashboardImg from "@/assets/foldeasy-dashboard.png";
 import noderedImg from "@/assets/foldeasy-nodered.png";
 import mcaSchematicImg from "@/assets/mca-schematic.png";
 import mcaSymbolImg from "@/assets/mca-symbol.png";
+import mcaVerification from "@/assets/mca-verification.jpg";
 import mcaDelaySchImg from "@/assets/mca-delay-sch.png";
+import mcaDelayGraph from "@/assets/mca-delay-graph.jpg";
+import mcaEnergyGraph from "@/assets/mca-energy-graph.jpg";
 import mcaEnergyCalcImg from "@/assets/mca-energy-calc.png";
-import mcaLeakageCalcImg from "@/assets/mca-leakage-calc.png";
 import mcaLeakageSchImg from "@/assets/mca-leakage-sch.png";
+import mcaLeakageMinGraph from "@/assets/mca-leakage-min-graph.jpg";
+import mcaLeakageCalcImg from "@/assets/mca-leakage-calc.png";
+
 
 const projects = [
   {
@@ -68,9 +73,13 @@ const foldEasyMedia = [
 const mcaMedia = [
   { type: "image", src: mcaSchematicImg, alt: "8-bit MCA Schematic", title: "Full Schematic" },
   { type: "image", src: mcaSymbolImg, alt: "8-bit MCA Symbol", title: "Symbol" },
-  { type: "image", src: mcaDelaySchImg, alt: "MCA Delay Analysis Schematic", title: "Delay Analysis" },
+  { type: "image", src: mcaVerification, alt: "8-bit MCA Verification", title: "8-bit MCA Verification" },
+  { type: "image", src: mcaDelaySchImg, alt: "MCA Delay Schematic", title: "Delay Test Schematic" },
+  { type: "image", src: mcaDelayGraph, alt: "MCA Delay Analysis", title: "Delay Test Analysis" },
+  { type: "image", src: mcaEnergyGraph, alt: "MCA Energy Analysis", title: "Energy Test Analysis" },
   { type: "image", src: mcaEnergyCalcImg, alt: "MCA Energy Calculation", title: "Energy Calculation" },
   { type: "image", src: mcaLeakageSchImg, alt: "MCA Leakage Schematic", title: "Leakage Test Schematic" },
+  { type: "image", src: mcaLeakageMinGraph, alt: "MCA Leakage Analysis", title: "Min Leakage Test Analysis" },
   { type: "image", src: mcaLeakageCalcImg, alt: "MCA Leakage Calculation", title: "Leakage Calculation" }
 ];
 

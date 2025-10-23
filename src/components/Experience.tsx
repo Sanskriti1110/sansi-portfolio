@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Briefcase, GraduationCap } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const experiences = [
   {
@@ -54,6 +55,57 @@ const experiences = [
 ];
 
 export const Experience = () => {
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
+  const [timelineProgress, setTimelineProgress] = useState(0);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    // Intersection Observer for cards
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            setVisibleItems((prev) => new Set([...prev, index]));
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
+    );
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) cardObserver.observe(ref);
+    });
+    observers.push(cardObserver);
+
+    // Scroll handler for timeline progress
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const timelineTop = rect.top;
+      const timelineHeight = rect.height;
+
+      if (timelineTop < windowHeight && timelineTop + timelineHeight > 0) {
+        const visibleTop = Math.max(0, windowHeight - timelineTop);
+        const progress = Math.min(100, (visibleTop / timelineHeight) * 100);
+        setTimelineProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section id="experience" className="py-20 px-6 sm:px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
       <div className="container mx-auto max-w-5xl">
@@ -66,21 +118,41 @@ export const Experience = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border"></div>
+        <div className="relative" ref={timelineRef}>
+          {/* Timeline line - static background */}
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border/30"></div>
+          
+          {/* Timeline line - animated progress */}
+          <div 
+            className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-primary via-primary to-transparent transition-all duration-500 ease-out"
+            style={{ height: `${timelineProgress}%` }}
+          ></div>
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <div 
                 key={index}
+                ref={(el) => (itemRefs.current[index] = el)}
+                data-index={index}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } flex-col gap-8`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                } flex-col gap-8 transition-all duration-700 ${
+                  visibleItems.has(index) 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
               >
-                {/* Timeline dot */}
-                <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10"></div>
+                {/* Timeline dot with animation */}
+                <div 
+                  className={`hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 transition-all duration-500 ${
+                    visibleItems.has(index)
+                      ? 'scale-100 opacity-100'
+                      : 'scale-0 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
+                  <div className={`absolute inset-0 rounded-full bg-primary ${visibleItems.has(index) ? 'animate-ping' : ''}`}></div>
+                </div>
 
                 {/* Content card */}
                 <Card className="flex-1 bg-card border-border hover:border-primary/50 transition-all hover:scale-105 group lg:max-w-[calc(50%-2rem)]">

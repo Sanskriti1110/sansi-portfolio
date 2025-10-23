@@ -10,6 +10,12 @@ import bottomPcbImg from "@/assets/foldeasy-bottom-pcb.jpg";
 import blockDiagramImg from "@/assets/foldeasy-block-diagram.png";
 import dashboardImg from "@/assets/foldeasy-dashboard.png";
 import noderedImg from "@/assets/foldeasy-nodered.png";
+import mcaSchematicImg from "@/assets/mca-schematic.png";
+import mcaSymbolImg from "@/assets/mca-symbol.png";
+import mcaDelaySchImg from "@/assets/mca-delay-sch.png";
+import mcaEnergyCalcImg from "@/assets/mca-energy-calc.png";
+import mcaLeakageCalcImg from "@/assets/mca-leakage-calc.png";
+import mcaLeakageSchImg from "@/assets/mca-leakage-sch.png";
 
 const projects = [
   {
@@ -57,6 +63,15 @@ const foldEasyMedia = [
   { type: "image", src: dashboardImg, alt: "FoldEasy Dashboard", title: "Dashboard" },
   { type: "image", src: noderedImg, alt: "FoldEasy Node-RED Backend", title: "Node-RED" },
   { type: "video", src: "https://drive.google.com/file/d/1vTpkGeL2Uh_pKV8Ku1coR16XFbSWJvqz/preview", alt: "FoldEasy Demo Video", title: "Demo Video" }
+];
+
+const mcaMedia = [
+  { type: "image", src: mcaSchematicImg, alt: "8-bit MCA Schematic", title: "Full Schematic" },
+  { type: "image", src: mcaSymbolImg, alt: "8-bit MCA Symbol", title: "Symbol" },
+  { type: "image", src: mcaDelaySchImg, alt: "MCA Delay Analysis Schematic", title: "Delay Analysis" },
+  { type: "image", src: mcaEnergyCalcImg, alt: "MCA Energy Calculation", title: "Energy Calculation" },
+  { type: "image", src: mcaLeakageSchImg, alt: "MCA Leakage Schematic", title: "Leakage Test Schematic" },
+  { type: "image", src: mcaLeakageCalcImg, alt: "MCA Leakage Calculation", title: "Leakage Calculation" }
 ];
 
 export const Projects = () => {
@@ -122,7 +137,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Button */}
-                {index === 1 ? (
+                {(index === 1 || index === 3) ? (
                   <Dialog open={openDialog === index} onOpenChange={(open) => setOpenDialog(open ? index : null)}>
                     <DialogTrigger asChild>
                       <Button 
@@ -140,7 +155,7 @@ export const Projects = () => {
                       <div className="flex-1 min-h-0 overflow-hidden">
                         <Carousel className="w-full h-full">
                           <CarouselContent className="h-full">
-                            {foldEasyMedia.map((media, mediaIndex) => (
+                            {(index === 1 ? foldEasyMedia : mcaMedia).map((media, mediaIndex) => (
                               <CarouselItem key={mediaIndex} className="h-full flex items-center justify-center">
                                 <div className="w-full h-full flex flex-col py-2">
                                   <h3 className="text-sm sm:text-lg font-semibold mb-2 text-center flex-shrink-0">{media.title}</h3>

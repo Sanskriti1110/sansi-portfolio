@@ -132,45 +132,43 @@ export const Projects = () => {
                         View Details
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-[95vw] sm:max-w-4xl max-h-[95vh] overflow-hidden flex flex-col p-4 sm:p-6">
-                      <DialogHeader className="flex-shrink-0">
-                        <DialogTitle className="text-xl sm:text-2xl font-bold">{project.title}</DialogTitle>
+                    <DialogContent className="max-w-[95vw] sm:max-w-5xl h-[95vh] overflow-hidden flex flex-col p-3 sm:p-6">
+                      <DialogHeader className="flex-shrink-0 pb-2">
+                        <DialogTitle className="text-lg sm:text-2xl font-bold">{project.title}</DialogTitle>
+                        <p className="text-muted-foreground text-xs sm:text-sm pt-2">{project.description}</p>
                       </DialogHeader>
-                      <div className="flex-1 overflow-hidden flex flex-col min-h-0">
-                        <p className="text-muted-foreground text-sm sm:text-base mb-3 sm:mb-4 flex-shrink-0">{project.description}</p>
-                        <div className="flex-1 min-h-0 relative">
-                          <Carousel className="w-full h-full">
-                            <CarouselContent className="h-full">
-                              {foldEasyMedia.map((media, mediaIndex) => (
-                                <CarouselItem key={mediaIndex} className="h-full">
-                                  <div className="h-full flex flex-col">
-                                    <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-center flex-shrink-0">{media.title}</h3>
-                                    <div className="flex-1 min-h-0 flex items-center justify-center">
-                                      {media.type === "image" ? (
-                                        <img 
-                                          src={media.src} 
-                                          alt={media.alt}
-                                          className="max-w-full max-h-full object-contain rounded-lg"
-                                        />
-                                      ) : (
-                                        <div className="w-full h-full max-h-[60vh]">
-                                          <iframe
-                                            src={media.src}
-                                            className="w-full h-full rounded-lg"
-                                            allow="autoplay"
-                                            allowFullScreen
-                                          ></iframe>
-                                        </div>
-                                      )}
-                                    </div>
+                      <div className="flex-1 min-h-0 overflow-hidden">
+                        <Carousel className="w-full h-full">
+                          <CarouselContent className="h-full">
+                            {foldEasyMedia.map((media, mediaIndex) => (
+                              <CarouselItem key={mediaIndex} className="h-full flex items-center justify-center">
+                                <div className="w-full h-full flex flex-col py-2">
+                                  <h3 className="text-sm sm:text-lg font-semibold mb-2 text-center flex-shrink-0">{media.title}</h3>
+                                  <div className="flex-1 min-h-0 flex items-center justify-center px-2 sm:px-4">
+                                    {media.type === "image" ? (
+                                      <img 
+                                        src={media.src} 
+                                        alt={media.alt}
+                                        className="max-w-full max-h-[calc(95vh-180px)] w-auto h-auto object-contain rounded-lg"
+                                      />
+                                    ) : (
+                                      <div className="w-full h-full max-w-full" style={{ maxHeight: 'calc(95vh - 180px)' }}>
+                                        <iframe
+                                          src={media.src}
+                                          className="w-full h-full rounded-lg"
+                                          allow="autoplay"
+                                          allowFullScreen
+                                        ></iframe>
+                                      </div>
+                                    )}
                                   </div>
-                                </CarouselItem>
-                              ))}
-                            </CarouselContent>
-                            <CarouselPrevious className="left-2" />
-                            <CarouselNext className="right-2" />
-                          </Carousel>
-                        </div>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious className="left-1 sm:left-2" />
+                          <CarouselNext className="right-1 sm:right-2" />
+                        </Carousel>
                       </div>
                     </DialogContent>
                   </Dialog>

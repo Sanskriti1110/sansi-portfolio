@@ -1,7 +1,15 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ExternalLink, Cpu, Shirt, Blocks, Zap } from "lucide-react";
+import { useState } from "react";
+import topPcbImg from "@/assets/foldeasy-top-pcb.jpg";
+import bottomPcbImg from "@/assets/foldeasy-bottom-pcb.jpg";
+import blockDiagramImg from "@/assets/foldeasy-block-diagram.png";
+import dashboardImg from "@/assets/foldeasy-dashboard.png";
+import noderedImg from "@/assets/foldeasy-nodered.png";
 
 const projects = [
   {
@@ -42,7 +50,18 @@ const projects = [
   }
 ];
 
+const foldEasyMedia = [
+  { type: "image", src: topPcbImg, alt: "FoldEasy Top PCB", title: "Top PCB" },
+  { type: "image", src: bottomPcbImg, alt: "FoldEasy Bottom PCB", title: "Bottom PCB" },
+  { type: "image", src: blockDiagramImg, alt: "FoldEasy System Block Diagram", title: "Block Diagram" },
+  { type: "image", src: dashboardImg, alt: "FoldEasy Dashboard", title: "Dashboard" },
+  { type: "image", src: noderedImg, alt: "FoldEasy Node-RED Backend", title: "Node-RED" },
+  { type: "video", src: "https://drive.google.com/file/d/1vTpkGeL2Uh_pKV8Ku1coR16XFbSWJvqz/preview", alt: "FoldEasy Demo Video", title: "Demo Video" }
+];
+
 export const Projects = () => {
+  const [openDialog, setOpenDialog] = useState<number | null>(null);
+
   return (
     <section id="projects" className="py-12 sm:py-14 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16" style={{ backgroundImage: 'linear-gradient(135deg, rgb(13, 13, 13) 0%, rgb(20, 14, 27) 50%, rgb(26, 15, 36) 100%)' }}>
       <div className="container mx-auto max-w-7xl">
@@ -103,15 +122,69 @@ export const Projects = () => {
                 </div>
 
                 {/* Button */}
-                <Button 
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-9 rounded-md px-3 w-full gradient-accent text-white border-0 hover:opacity-90"
-                  asChild
-                >
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Details
-                  </a>
-                </Button>
+                {index === 1 ? (
+                  <Dialog open={openDialog === index} onOpenChange={(open) => setOpenDialog(open ? index : null)}>
+                    <DialogTrigger asChild>
+                      <Button 
+                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-9 rounded-md px-3 w-full gradient-accent text-white border-0 hover:opacity-90"
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        View Details
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-bold">{project.title}</DialogTitle>
+                      </DialogHeader>
+                      <div className="mt-4">
+                        <p className="text-muted-foreground mb-6">{project.description}</p>
+                        <Carousel className="w-full">
+                          <CarouselContent>
+                            {foldEasyMedia.map((media, mediaIndex) => (
+                              <CarouselItem key={mediaIndex}>
+                                <div className="p-1">
+                                  <Card>
+                                    <CardContent className="flex flex-col items-center justify-center p-6">
+                                      <h3 className="text-lg font-semibold mb-4">{media.title}</h3>
+                                      {media.type === "image" ? (
+                                        <img 
+                                          src={media.src} 
+                                          alt={media.alt}
+                                          className="w-full h-auto rounded-lg"
+                                        />
+                                      ) : (
+                                        <div className="w-full aspect-video">
+                                          <iframe
+                                            src={media.src}
+                                            className="w-full h-full rounded-lg"
+                                            allow="autoplay"
+                                            allowFullScreen
+                                          ></iframe>
+                                        </div>
+                                      )}
+                                    </CardContent>
+                                  </Card>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                        </Carousel>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                ) : (
+                  <Button 
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-9 rounded-md px-3 w-full gradient-accent text-white border-0 hover:opacity-90"
+                    asChild
+                  >
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Details
+                    </a>
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}

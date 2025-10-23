@@ -132,28 +132,28 @@ export const Projects = () => {
                         View Details
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl font-bold">{project.title}</DialogTitle>
+                    <DialogContent className="max-w-[95vw] sm:max-w-4xl max-h-[95vh] overflow-hidden flex flex-col p-4 sm:p-6">
+                      <DialogHeader className="flex-shrink-0">
+                        <DialogTitle className="text-xl sm:text-2xl font-bold">{project.title}</DialogTitle>
                       </DialogHeader>
-                      <div className="mt-4">
-                        <p className="text-muted-foreground mb-6">{project.description}</p>
-                        <Carousel className="w-full">
-                          <CarouselContent>
-                            {foldEasyMedia.map((media, mediaIndex) => (
-                              <CarouselItem key={mediaIndex}>
-                                <div className="p-1">
-                                  <Card>
-                                    <CardContent className="flex flex-col items-center justify-center p-6">
-                                      <h3 className="text-lg font-semibold mb-4">{media.title}</h3>
+                      <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+                        <p className="text-muted-foreground text-sm sm:text-base mb-3 sm:mb-4 flex-shrink-0">{project.description}</p>
+                        <div className="flex-1 min-h-0 relative">
+                          <Carousel className="w-full h-full">
+                            <CarouselContent className="h-full">
+                              {foldEasyMedia.map((media, mediaIndex) => (
+                                <CarouselItem key={mediaIndex} className="h-full">
+                                  <div className="h-full flex flex-col">
+                                    <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-center flex-shrink-0">{media.title}</h3>
+                                    <div className="flex-1 min-h-0 flex items-center justify-center">
                                       {media.type === "image" ? (
                                         <img 
                                           src={media.src} 
                                           alt={media.alt}
-                                          className="w-full h-auto rounded-lg"
+                                          className="max-w-full max-h-full object-contain rounded-lg"
                                         />
                                       ) : (
-                                        <div className="w-full aspect-video">
+                                        <div className="w-full h-full max-h-[60vh]">
                                           <iframe
                                             src={media.src}
                                             className="w-full h-full rounded-lg"
@@ -162,15 +162,15 @@ export const Projects = () => {
                                           ></iframe>
                                         </div>
                                       )}
-                                    </CardContent>
-                                  </Card>
-                                </div>
-                              </CarouselItem>
-                            ))}
-                          </CarouselContent>
-                          <CarouselPrevious />
-                          <CarouselNext />
-                        </Carousel>
+                                    </div>
+                                  </div>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <CarouselPrevious className="left-2" />
+                            <CarouselNext className="right-2" />
+                          </Carousel>
+                        </div>
                       </div>
                     </DialogContent>
                   </Dialog>

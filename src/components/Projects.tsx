@@ -20,6 +20,11 @@ import mcaEnergyCalcImg from "@/assets/mca-energy-calc.png";
 import mcaLeakageSchImg from "@/assets/mca-leakage-sch.png";
 import mcaLeakageMinGraph from "@/assets/mca-leakage-min-graph.jpg";
 import mcaLeakageCalcImg from "@/assets/mca-leakage-calc.png";
+import clbSchematicImg from "@/assets/clb-schematic.png";
+import clbSipoSchImg from "@/assets/clb-sipo-sch.png";
+import clbDffSchImg from "@/assets/clb-dff-sch.png";
+import clbSramTestSchImg from "@/assets/clb-sram-test-sch.png";
+import clbSramArraySchImg from "@/assets/clb-sram-array-sch.png";
 
 
 const projects = [
@@ -81,6 +86,14 @@ const mcaMedia = [
   { type: "image", src: mcaLeakageSchImg, alt: "MCA Leakage Schematic", title: "Leakage Test Schematic" },
   { type: "image", src: mcaLeakageMinGraph, alt: "MCA Leakage Analysis", title: "Min Leakage Test Analysis" },
   { type: "image", src: mcaLeakageCalcImg, alt: "MCA Leakage Calculation", title: "Leakage Calculation" }
+];
+
+const clbMedia = [
+  { type: "image", src: clbSchematicImg, alt: "CLB Full Schematic", title: "CLB Schematic" },
+  { type: "image", src: clbSipoSchImg, alt: "16-bit SIPO Shift Register", title: "SIPO Shift Register" },
+  { type: "image", src: clbDffSchImg, alt: "D Flip-Flop Schematic", title: "D Flip-Flop" },
+  { type: "image", src: clbSramTestSchImg, alt: "SRAM Test Schematic", title: "SRAM Test" },
+  { type: "image", src: clbSramArraySchImg, alt: "SRAM Array Schematic", title: "SRAM Array" }
 ];
 
 export const Projects = () => {
@@ -146,7 +159,7 @@ export const Projects = () => {
                 </div>
 
                 {/* Button */}
-                {(index === 1 || index === 3) ? (
+                {(index === 1 || index === 2 || index === 3) ? (
                   <Dialog open={openDialog === index} onOpenChange={(open) => setOpenDialog(open ? index : null)}>
                     <DialogTrigger asChild>
                       <Button 
@@ -164,7 +177,7 @@ export const Projects = () => {
                       <div className="flex-1 min-h-0 overflow-hidden">
                         <Carousel className="w-full h-full">
                           <CarouselContent className="h-full">
-                            {(index === 1 ? foldEasyMedia : mcaMedia).map((media, mediaIndex) => (
+                            {(index === 1 ? foldEasyMedia : index === 2 ? clbMedia : mcaMedia).map((media, mediaIndex) => (
                               <CarouselItem key={mediaIndex} className="h-full flex items-center justify-center">
                                 <div className="w-full h-full flex flex-col py-2">
                                   <h3 className="text-sm sm:text-lg font-semibold mb-2 text-center flex-shrink-0">{media.title}</h3>

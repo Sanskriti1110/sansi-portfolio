@@ -119,12 +119,12 @@ export const Experience = () => {
         </div>
 
         <div className="relative" ref={timelineRef}>
-          {/* Timeline line - static background */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border/30"></div>
+          {/* Timeline line - static background (left side on mobile, center on desktop) */}
+          <div className="absolute left-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-0.5 h-full bg-border/30"></div>
           
           {/* Timeline line - animated progress */}
           <div 
-            className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-primary via-primary to-transparent transition-all duration-500 ease-out"
+            className="absolute left-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-0.5 bg-gradient-to-b from-primary via-primary to-transparent transition-all duration-500 ease-out"
             style={{ height: `${timelineProgress}%` }}
           ></div>
 
@@ -142,9 +142,9 @@ export const Experience = () => {
                     : 'opacity-0 translate-y-8'
                 }`}
               >
-                {/* Timeline dot with animation */}
+                {/* Timeline dot with animation (left side on mobile, center on desktop) */}
                 <div 
-                  className={`hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 transition-all duration-500 ${
+                  className={`absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10 transition-all duration-500 ${
                     visibleItems.has(index)
                       ? 'scale-100 opacity-100'
                       : 'scale-0 opacity-0'
@@ -154,8 +154,8 @@ export const Experience = () => {
                   <div className={`absolute inset-0 rounded-full bg-primary ${visibleItems.has(index) ? 'animate-ping' : ''}`}></div>
                 </div>
 
-                {/* Content card */}
-                <Card className="flex-1 bg-card border-border hover:border-primary/50 transition-all hover:scale-105 group lg:max-w-[calc(50%-2rem)]">
+                {/* Content card (left margin on mobile for timeline space) */}
+                <Card className="flex-1 ml-12 lg:ml-0 bg-card border-border hover:border-primary/50 transition-all hover:scale-105 group lg:max-w-[calc(50%-2rem)]">
                   <div className="p-6 lg:p-8 space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">

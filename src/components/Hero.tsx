@@ -42,10 +42,10 @@ export const Hero = () => {
             </div>
 
             {/* UPDATED: Perfect font sizing matching Image 1 */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               Sanskriti Binani
               <br />
-              <span className="text-primary text-xl sm:text-2xl lg:text-3xl">
+              <span className="text-primary text-xl sm:text-2xl lg:text-3xl font-display">
                 <Typewriter
                   options={{
                     strings: ['Hardware Engineer', 'FPGA Developer', 'Embedded Systems Designer'],
@@ -73,7 +73,7 @@ export const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all font-medium"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all font-medium hover:scale-105"
                 asChild
               >
                 <a href="#projects" className="flex items-center gap-2">
@@ -83,7 +83,7 @@ export const Hero = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-border hover:bg-card/40 backdrop-blur-sm transition-all font-medium"
+                className="border-border hover:bg-card/40 backdrop-blur-sm transition-all font-medium hover:scale-105 hover:border-primary/50"
                 asChild
               >
                 <a href="/resume.pdf" download className="flex items-center gap-2">

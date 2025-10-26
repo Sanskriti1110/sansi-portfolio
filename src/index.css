@@ -25,8 +25,12 @@
     --ring: 270 80% 75%;
     --radius: 0.75rem;
     
-    /* Smooth transitions */
+    /* Enhanced design tokens */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-radial: radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%);
   }
 }
 
@@ -38,6 +42,13 @@
   body {
     @apply text-foreground;
     background: #000;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -78,5 +89,35 @@
 @layer utilities {
   .gradient-accent {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elegant);
   }
 }

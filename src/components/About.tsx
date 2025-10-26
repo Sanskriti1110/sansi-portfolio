@@ -28,6 +28,13 @@ const interests = [
   }
 ];
 
+const stats = [
+  { value: "10+", label: "Projects Completed" },
+  { value: "3+", label: "Research Papers" },
+  { value: "2+", label: "Years Experience" },
+  { value: "874.5fJ", label: "CLB Energy" }
+];
+
 export const About = () => {
   return (
     <section id="about" className="py-20 px-6 sm:px-8 lg:px-16">
@@ -36,6 +43,25 @@ export const About = () => {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
             About <span className="text-primary">Me</span>
           </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-6"></div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-all hover:scale-105 hover-lift"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
+                {stat.value}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

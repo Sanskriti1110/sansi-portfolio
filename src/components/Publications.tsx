@@ -33,10 +33,10 @@ export const Publications = () => {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
             Research <span className="text-primary">Publications</span>
           </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Published research contributions in electrical engineering and architecture
           </p>
-          <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4">

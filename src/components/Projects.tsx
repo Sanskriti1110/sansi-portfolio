@@ -104,13 +104,13 @@ export const Projects = () => {
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
             Featured <span className="text-primary">Projects</span>
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             A showcase of hardware, embedded systems, and FPGA projects demonstrating end-to-end engineering
           </p>
-          <div className="w-16 h-0.5 bg-primary mx-auto mt-4"></div>
         </div>
 
         {/* Project Cards - FIXED: Increased gap and margins */}

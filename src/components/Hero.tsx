@@ -19,8 +19,10 @@ export const Hero = () => {
           {/* Left column - Image - UPDATED: Perfect proportions matching Image 1 */}
           <div className="flex justify-center order-1 lg:order-1 animate-scale-in flex-shrink-0">
             <div className="relative">
-              {/* Enhanced glow effect for gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-full blur-2xl opacity-60 animate-pulse"></div>
+              {/* Soft outward glow effect - multiple layers for depth */}
+              <div className="absolute inset-0 bg-primary/40 rounded-full blur-3xl opacity-70 animate-pulse scale-110"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/25 to-primary/30 rounded-full blur-[80px] opacity-60 scale-125"></div>
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[100px] opacity-50 scale-150"></div>
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
                 <img
                   src={headshotImage}
